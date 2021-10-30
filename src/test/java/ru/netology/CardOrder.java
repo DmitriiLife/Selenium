@@ -51,7 +51,7 @@ public class CardOrder {
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79111111111");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(tagName("button")).click();
-        String actualMessage = driver.findElement(By.cssSelector("[data-test-id='name'] .input__sub")).getText().strip();
+        String actualMessage = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText().strip();
         String expectedMessage = "Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы.";
         Assertions.assertEquals(expectedMessage, actualMessage, "Ты что творишь?");
     }
@@ -62,7 +62,7 @@ public class CardOrder {
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+11179111111111");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(tagName("button")).click();
-        String actualMessage = driver.findElement(By.cssSelector("[data-test-id='phone'] .input__sub")).getText().strip();
+        String actualMessage = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub")).getText().strip();
         String expectedMessage = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
         Assertions.assertEquals(expectedMessage, actualMessage, "Ты что творишь?");
     }
@@ -73,7 +73,7 @@ public class CardOrder {
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79111111111");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(tagName("button")).click();
-        String actualMessage = driver.findElement(By.cssSelector("[data-test-id='name'] .input__sub")).getText().strip();
+        String actualMessage = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText().strip();
         String expectedMessage = "Поле обязательно для заполнения";
         Assertions.assertEquals(expectedMessage, actualMessage, "Ты что творишь?");
     }
@@ -84,7 +84,7 @@ public class CardOrder {
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(tagName("button")).click();
-        String actualMessage = driver.findElement(By.cssSelector("[data-test-id='phone'] .input__sub")).getText().strip();
+        String actualMessage = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub")).getText().strip();
         String expectedMessage = "Поле обязательно для заполнения";
         Assertions.assertEquals(expectedMessage, actualMessage, "Ты что творишь?");
     }
@@ -94,7 +94,7 @@ public class CardOrder {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Иван");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79111111111");
         driver.findElement(tagName("button")).click();
-        String actualMessage = driver.findElement(By.cssSelector("[data-test-id='agreement'] .checkbox__text")).getText().strip();
+        String actualMessage = driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid .checkbox__text")).getText().strip();
         String expectedMessage = "Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй";
         Assertions.assertEquals(expectedMessage, actualMessage, "Ты что творишь?");
     }
